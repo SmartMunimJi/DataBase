@@ -1,0 +1,22 @@
+step 1. Login with "root" user.
+cmd> mysql -u root -p
+Password: manager
+
+step 2. Create a new user.
+mysql> CREATE USER smartmunim@localhost IDENTIFIED BY 'smartmunimji';
+
+step 3. Create a new database/schema.
+mysql> CREATE DATABASE classwork;
+mysql> SHOW DATABASES;
+
+step 4. Give all permissions to the new user on the new database.
+mysql> GRANT ALL PRIVILEGES ON smartmunimji_db.* TO smartmunim@localhost;
+mysql> FLUSH PRIVILEGES;
+
+step 5. mysql> EXIT
+step 1. Login with new user and password on MySQL CLI.
+cmd> mysql -u smartmunim -p
+Password:smartmunimji
+
+SELECT user FROM mysql.user;
+desc mysql.user;
