@@ -6,7 +6,7 @@ step 2. Create a new user.
 mysql> CREATE USER smartmunim@localhost IDENTIFIED BY 'smartmunimji';
 
 step 3. Create a new database/schema.
-mysql> CREATE DATABASE classwork;
+mysql> CREATE DATABASE smartmunimji-db;
 mysql> SHOW DATABASES;
 
 step 4. Give all permissions to the new user on the new database.
