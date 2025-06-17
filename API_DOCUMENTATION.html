@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>API_DOCUMENTATION.markdown</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+html,footer,header{
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Custom MD PDF CSS
+ */
+html,footer,header{
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+
+ }
+body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+<link rel="stylesheet" href="file:///r%3A/2.Travail/1.Enseignement/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css"><link rel="stylesheet" href="file:///d%3A/rdaros/Cours/_1.Outils/2.Developpement/1.SCSS/main.css" type="text/css">
+</head>
+
+<body>
+    <h1 id="smartmunimji-backend-api-documentation">SmartMunimJi Backend API Documentation</h1>
+<p>This document lists all API endpoints for the <code>smartmunimji-backend</code> application, their HTTP methods, responsible controllers, descriptions, request bodies, responses, and required roles.</p>
+<h2 id="api-endpoints">API Endpoints</h2>
+<table>
+<thead>
+<tr>
+<th>Endpoint</th>
+<th>Method</th>
+<th>Controller</th>
+<th>Description</th>
+<th>Request Body</th>
+<th>Response</th>
+<th>Role Required</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/sm/register</code></td>
+<td>POST</td>
+<td><code>CustomerController</code></td>
+<td>Registers a new customer in <code>smartmunimji_db.customers</code>.</td>
+<td><code>{&quot;name&quot;: &quot;string&quot;, &quot;email&quot;: &quot;string&quot;, &quot;password&quot;: &quot;string&quot;, &quot;phone&quot;: &quot;string&quot;, &quot;address&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: &quot;Customer registered successfully&quot;<br><code>400 Bad Request</code>: &quot;Email already exists&quot;</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>/sm/authenticate</code></td>
+<td>POST</td>
+<td><code>CustomerController</code></td>
+<td>Authenticates a customer and returns a JWT token.</td>
+<td><code>{&quot;email&quot;: &quot;string&quot;, &quot;password&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: JWT token<br><code>401 Unauthorized</code>: &quot;Invalid credentials&quot;</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>/sm/cust/profile</code></td>
+<td>GET</td>
+<td><code>CustomerController</code></td>
+<td>Retrieves customer profile (placeholder).</td>
+<td>None</td>
+<td><code>200 OK</code>: &quot;Customer profile accessed successfully&quot;<br><code>401 Unauthorized</code>: &quot;Unauthorized&quot;</td>
+<td><code>ROLE_CUSTOMER</code></td>
+</tr>
+<tr>
+<td><code>/sm/update-profile</code></td>
+<td>PUT</td>
+<td><code>CustomerController</code></td>
+<td>Updates customer profile (name, phone, address).</td>
+<td><code>{&quot;name&quot;: &quot;string&quot;, &quot;phone&quot;: &quot;string&quot;, &quot;address&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: &quot;Profile updated successfully&quot;<br><code>400 Bad Request</code>: &quot;Customer not found&quot;<br><code>401 Unauthorized</code>: &quot;Unauthorized&quot;</td>
+<td><code>ROLE_CUSTOMER</code></td>
+</tr>
+<tr>
+<td><code>/sm/admin/register</code></td>
+<td>POST</td>
+<td><code>AdminController</code></td>
+<td>Registers a new admin in <code>smartmunimji_db.admins</code>.</td>
+<td><code>{&quot;email&quot;: &quot;string&quot;, &quot;password&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: &quot;Admin registered successfully&quot;<br><code>400 Bad Request</code>: &quot;Admin email already exists&quot;</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>/sm/admin/authenticate</code></td>
+<td>POST</td>
+<td><code>AdminController</code></td>
+<td>Authenticates an admin and returns a JWT token.</td>
+<td><code>{&quot;email&quot;: &quot;string&quot;, &quot;password&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: JWT token<br><code>401 Unauthorized</code>: &quot;Invalid credentials&quot;</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>/sm/admin/dashboard</code></td>
+<td>GET</td>
+<td><code>AdminController</code></td>
+<td>Accesses admin dashboard (placeholder).</td>
+<td>None</td>
+<td><code>200 OK</code>: &quot;Admin dashboard accessed successfully&quot;<br><code>401 Unauthorized</code>: &quot;Unauthorized&quot;</td>
+<td><code>ROLE_ADMIN</code></td>
+</tr>
+<tr>
+<td><code>/sm/seller/register</code></td>
+<td>POST</td>
+<td><code>SellerController</code></td>
+<td>Registers a new seller in <code>smartmunimji_db.sellers</code>.</td>
+<td><code>{&quot;sellerName&quot;: &quot;string&quot;, &quot;sellersEmail&quot;: &quot;string&quot;, &quot;password&quot;: &quot;string&quot;, &quot;sellerContact&quot;: &quot;string&quot;, &quot;shopName&quot;: &quot;string&quot;, &quot;shopAddress&quot;: &quot;string&quot;, &quot;city&quot;: &quot;string&quot;, &quot;pincode&quot;: &quot;string&quot;, &quot;category&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: &quot;Seller registered successfully&quot;<br><code>400 Bad Request</code>: &quot;Seller email already exists&quot;</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>/sm/seller/authenticate</code></td>
+<td>POST</td>
+<td><code>SellerController</code></td>
+<td>Authenticates a seller and returns a JWT token.</td>
+<td><code>{&quot;sellersEmail&quot;: &quot;string&quot;, &quot;password&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: JWT token<br><code>401 Unauthorized</code>: &quot;Invalid credentials&quot;</td>
+<td>None</td>
+</tr>
+<tr>
+<td><code>/sm/customer/register-product</code></td>
+<td>POST</td>
+<td><code>ProductController</code></td>
+<td>Verifies order in <code>radhe_shyam_db.orders</code>, checks shop name in <code>smartmunimji_db.sellers</code>, and registers product in <code>smartmunimji_db.registered_products</code>.</td>
+<td><code>{&quot;orderId&quot;: &quot;string&quot;, &quot;dateOfPurchase&quot;: &quot;YYYY-MM-DD&quot;, &quot;shopName&quot;: &quot;string&quot;}</code></td>
+<td><code>200 OK</code>: &quot;Product registered successfully&quot;<br><code>400 Bad Request</code>: &quot;Invalid shop name&quot;, &quot;Invalid order ID or date of purchase&quot;, &quot;Product already registered&quot;<br><code>401 Unauthorized</code>: &quot;Unauthorized&quot;<br><code>500 Internal Server Error</code>: &quot;Product not found&quot;</td>
+<td><code>ROLE_CUSTOMER</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="notes">Notes</h2>
+<ul>
+<li><strong>Authentication</strong>: Protected endpoints require a JWT token in the <code>Authorization</code> header (<code>Bearer &lt;token&gt;</code>).</li>
+<li><strong>Database</strong>:
+<ul>
+<li><code>smartmunimji_db</code>: Stores <code>customers</code>, <code>admins</code>, <code>sellers</code>, <code>registered_products</code>.</li>
+<li><code>radhe_shyam_db</code>: Stores <code>orders</code> and <code>products</code> (SELECT-only access).</li>
+</ul>
+</li>
+<li><strong>Error Handling</strong>: APIs return appropriate HTTP status codes and error messages.</li>
+<li><strong>Logging</strong>: All API calls are logged for debugging purposes.</li>
+</ul>
+
+</body>
+
+</html>
